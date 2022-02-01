@@ -5,3 +5,7 @@
 .characters {
   max-width: 200px;
 }
+
+.charactersLists {
+  display: grid;
+}

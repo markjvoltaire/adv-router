@@ -1,11 +1,23 @@
+import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom';
 import './App.css';
+import Character from './components/CharacterDetail';
+import Home from './components/Home';
 import Characters from './views/Characters';
 
 function App() {
   return (
     <div className="App">
-      <h1>Breaking Bad </h1>
-      <Characters />
+      <BrowserRouter>
+        <NavLink to="/">Home</NavLink>
+        <br />
+        <br />
+        <NavLink to="/Characters">Characters</NavLink>
+        <Switch>
+          <Route exact path="/Characters" component={Characters} />
+          <Route exact path="/characters/:char_id" component={Character} />
+        </Switch>
+      </BrowserRouter>
+      <Home />
     </div>
   );
 }
