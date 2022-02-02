@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import CharactersLists from './components/CharactersLists';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
