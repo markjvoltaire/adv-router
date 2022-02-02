@@ -2,15 +2,13 @@ import { Link } from 'react-router-dom';
 
 export default function CharactersLists({ characters }) {
   return (
-    <div>
+    <div className="characterList">
       {characters.map((character) => (
-        <div className="characterList" key={character.id}>
+        <div key={character.id}>
           <br />
           <br />
           <Link to={`characters/${character.char_id}`}>
-            <h1>{character.name}</h1>
-            <p> Nickname: {character.nickname}</p>
-            <p>Status: {character.status}</p>
+            <h4>{character.name}</h4>
             <img className="characters" src={character.img} />
             <br />
             <br />
