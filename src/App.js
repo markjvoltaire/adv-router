@@ -14,7 +14,10 @@ function App() {
         <NavLink to="/Characters">Characters</NavLink>
         <Switch>
           <Route exact path="/characters" component={Characters} />
-          <Route exact path="/Characters/:char_id" component={Character} />
+          {/* <Route exact path="/Characters/:char_id" component={Character} /> */}
+          <Route exact path="/Characters/:char_id">
+            <Character />
+          </Route>
         </Switch>
       </BrowserRouter>
       <Home />

@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Characters from './Characters';
 
+
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { MemoryRouter } from 'react-router-dom';

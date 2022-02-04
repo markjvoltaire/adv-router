@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function CharacterDetail({ name, nickname, img }) {
-
   return (
     <div>
       <h4>Character info</h4>
