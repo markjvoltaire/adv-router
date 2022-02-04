@@ -1,13 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Characters from './Characters';
+
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import { MemoryRouter } from 'react-router-dom';
 
 const characters = [
   {
     char_id: 1,
-    name: 'Walter White',
+    name: 'Walter White Mock',
     birthday: '09-07-1958',
     occupation: ['High School Chemistry Teacher', 'Meth King Pin'],
     img: 'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg',
@@ -800,7 +802,7 @@ const characters = [
   },
   {
     char_id: 116,
-    name: 'Eduardo Salamanca',
+    name: 'Eduardo Salamanca mock',
     birthday: 'Unknown',
     occupation: ['Cartel Member'],
     img: 'https://vignette.wikia.nocookie.net/breakingbad/images/8/85/LaloProfileBCS.png/revision/latest?cb=20180925050152',
@@ -815,7 +817,7 @@ const characters = [
 
 const server = setupServer(
   rest.get('https://www.breakingbadapi.com/api/characters', (req, res, ctx) => {
-    return res(ctx.json([characters]));
+    return res(ctx.json(characters));
   })
 );
 
@@ -823,12 +825,15 @@ beforeAll(() => server.listen());
 
 afterAll(() => server.close());
 
-test('test if welcome to breaking bad renders on the page', async () => {
-  render(<App />);
+test('test if character jesse pinkman renders on app', async () => {
+  render(
+    <MemoryRouter>
+      <Characters />
+    </MemoryRouter>
+  );
 
-  const heading = screen.getByRole('heading', {
-    name: /welcome to breaking bad/i,
+  const character = await screen.findByRole('heading', {
+    name: /jesse pinkman/i,
   });
-  expect(heading).toBeInTheDocument();
-  expect(characters).toHaveLength(62);
+  expect(character).toBeInTheDocument();
 });
