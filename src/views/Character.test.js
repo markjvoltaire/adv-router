@@ -40,6 +40,10 @@ test('test if Walter White is being render from Character component', async () =
   const walter = await screen.findByRole('heading', {
     name: /walter white jr\./i,
   });
-  screen.debug();
+
+  const nickname = await screen.findByText(/nickname: flynn/i);
+  const walterImage = await screen.findByRole('img');
   expect(walter).toBeInTheDocument();
+  expect(nickname).toBeInTheDocument();
+  expect(walterImage).toBeInTheDocument();
 });
